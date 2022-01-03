@@ -27,7 +27,7 @@ def combat_check(investigator: Investigator, monster: Monster) -> bool:
 
 
 def combat_damage(investigator: Investigator, monster: Monster) -> None:
-    investigator.stamina = max(investigator.stamina - monster.combat_damage, 0)
+    investigator.reduce("stamina", monster.combat_damage)
     print(f'Monster deals physical damage to the investigator. Remaining stamina: {investigator.stamina}')
 
     if investigator.stamina == 0:

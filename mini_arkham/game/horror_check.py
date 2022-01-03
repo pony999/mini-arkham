@@ -13,7 +13,7 @@ def horror_check(investigator: Investigator, monster: Monster):
     test_attempts = investigator.will - monster.horror_rating
 
     print("The alien nature of the mythos threatens to overwhelm the investigator's mind...")
-    print(f'Investigator\'s will is: {investigator.will}; horror rating: {monster.horror_rating}')
+    print(f"Investigator's will is: {investigator.will}; monster's horror rating: {monster.horror_rating}")
 
     success_quantity = sum(
         dice.roll() for _ in range(test_attempts)
@@ -29,7 +29,7 @@ def horror_check(investigator: Investigator, monster: Monster):
 
 
 def horror_damage(investigator: Investigator, monster: Monster) -> None:
-    investigator.sanity = max(investigator.sanity - monster.horror_damage, 0)
+    investigator.reduce("sanity", monster.horror_damage)
     print(f'Investigator takes mind damage. Remaining sanity: {investigator.sanity}')
 
     if investigator.sanity == 0:
