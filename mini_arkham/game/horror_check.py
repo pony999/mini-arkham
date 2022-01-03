@@ -12,19 +12,23 @@ def horror_check(investigator: Investigator, monster: Monster):
     test_difficulty = 1
     test_attempts = investigator.will - monster.horror_rating
 
-    print("The alien nature of the mythos threatens to overwhelm the investigator's mind...")
-    print(f"Investigator's will is: {investigator.will}; monster's horror rating: {monster.horror_rating}")
+    user_introduction = " ".join(["The alien nature of the mythos threatens to overwhelm the investigator's mind...",
+                                  f"\nInvestigator's will ({investigator.will}),",
+                                  f"against monster's horror rating ({monster.horror_rating}), gives a",
+                                  f"{test_attempts} dice" if test_attempts > 1 else "single die",
+                                  f"throw."])
+    print(user_introduction)
 
     success_quantity = sum(
         dice.roll() for _ in range(test_attempts)
     )
-    print(f'Success count (number of attempts): {success_quantity} ({test_attempts})')
+    print(f'Success count (number of attempts): {success_quantity} ({test_attempts}). Required {test_difficulty}.')
 
     if success_quantity < test_difficulty:
         print("Investigator fails the horror check...")
         return False
     else:
-        print("Investigator passes the check, nothing happens")
+        print("Investigator passes the check, nothing happens.")
         return True
 
 

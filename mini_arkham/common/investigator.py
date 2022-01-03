@@ -15,9 +15,7 @@ class Investigator:
     def reduce(self, name: str, amount: int) -> None:
         """Calls reduce method for Attribute type parameters"""
         attr = getattr(self, name)
-        print(f"\ttype(attr): {type(attr)}")
         if isinstance(attr, Attribute):
-            print(f"\tReduce -> {attr}")
             attr.reduce(amount)
 
     def restore(self, name: str, amount: int) -> None:
@@ -28,9 +26,8 @@ class Investigator:
 
     def __str__(self):
         """Instance's string representation"""
-        return f"INVESTIGATOR STATS:\n" \
+        return f"INVESTIGATOR DETAILS:\n" \
                f">> {self.sanity}\n" \
                f">> {self.stamina}\n" \
                f">> will: {self.will}\n" \
-               f">> fight: {self.fight}\n" \
-               f"#############"
+               f">> fight: {self.fight}"

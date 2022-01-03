@@ -9,9 +9,10 @@ class Monster:
         self.combat_damage = combat_damage
 
     def __str__(self):
-        return f"MONSTER:\n" \
+        return f"MONSTER DETAILS:\n" \
                f">> awareness: {self.awareness}\n" \
-               f">> horror (rating, damage): ({self.horror_rating}, {self.horror_damage})\n" \
-               f">> combat (rating, damage): ({self.combat_rating}, {self.combat_damage})\n" \
-               f">> toughness: {self.toughness}\n" \
-               f"###############"
+               f">> horror rating: {self.horror_rating}\n" \
+               f">> horror damage: {self.horror_damage}\n" \
+               f">> combat rating: {self.combat_rating}\n" \
+               f">> combat damage: {self.combat_damage}\n" \
+               f">> toughness: {self.toughness}"
