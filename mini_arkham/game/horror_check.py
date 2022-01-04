@@ -25,7 +25,7 @@ def horror_check(investigator: Investigator, monster: Monster):
     print(f'Success count (number of attempts): {success_quantity} ({test_attempts}). Required {test_difficulty}.')
 
     if success_quantity < test_difficulty:
-        print("Investigator fails the horror check...")
+        print("Fails horror check...")
         return False
     else:
         print("Investigator passes the check, nothing happens.")
@@ -33,9 +33,5 @@ def horror_check(investigator: Investigator, monster: Monster):
 
 
 def horror_damage(investigator: Investigator, monster: Monster) -> None:
+    """Investigator ming gets overwhelmed by a monster and looses sanity equal to monsters horror_damage"""
     investigator.reduce("sanity", monster.horror_damage)
-    print(f'Investigator takes mind damage. Remaining sanity: {investigator.sanity}')
-
-    if investigator.sanity == 0:
-        print("The investigator is driven temporarily insane and no longer able to fight.")
-        investigator.insane = True

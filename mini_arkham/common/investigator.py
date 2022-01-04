@@ -13,16 +13,52 @@ class Investigator:
         self.unconscious = False
 
     def reduce(self, name: str, amount: int) -> None:
-        """Calls reduce method for Attribute type parameters"""
+        """Calls reduce method for Sanity or Stamina type parameters"""
         attr = getattr(self, name)
-        if isinstance(attr, Attribute):
+
+        if isinstance(attr, Sanity):
             attr.reduce(amount)
+            print(f'Investigator takes mind damage. Remaining sanity: {self.sanity}')
+            self.is_going_insane()
+
+        if isinstance(attr, Stamina):
+            attr.reduce(amount)
+            print(f'Investigator takes physical damage. Remaining stamina: {self.stamina}')
+            self.is_going_unconscious()
 
     def restore(self, name: str, amount: int) -> None:
-        """Calls restore method for Attribute type parameters"""
+        """Calls restore method for Sanity or Stamina type parameters"""
         attr = getattr(self, name)
-        if isinstance(attr, Attribute):
+
+        if isinstance(attr, Sanity):
             attr.restore(amount)
+            print(f'Investigator restores sanity. Current value: {self.sanity}')
+            self.is_no_longer_insane()
+
+        if isinstance(attr, Stamina):
+            attr.restore(amount)
+            print(f'Investogator restores stamina. Current value: {self.stamina}')
+            self.is_no_longer_unconscious()
+
+    def is_going_insane(self):
+        """Set insane to True if sanity drops to 0"""
+        if self.sanity == 0:
+            self.insane = True
+            print("Investigator is driven insane...")
+
+    def is_no_longer_insane(self):
+        """Set insane to False if sanity no longer 0"""
+        if self.sanity > 0:
+            self.insane = False
+
+    def is_going_unconscious(self):
+        if self.stamina == 0:
+            print("Investigator is knocked unconscious...")
+            self.unconscious = True
+
+    def is_no_longer_unconscious(self):
+        if self.stamina > 0:
+            self.unconscious = False
 
     def __str__(self):
         """Instance's string representation"""

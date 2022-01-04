@@ -31,8 +31,5 @@ def combat_check(investigator: Investigator, monster: Monster) -> bool:
 
 
 def combat_damage(investigator: Investigator, monster: Monster) -> None:
+    """Investigator gets hit by a monster and looses stamina equal to monsters combat_damage"""
     investigator.reduce("stamina", monster.combat_damage)
-    print(f'Monster deals physical damage to the investigator. Remaining stamina: {investigator.stamina}')
-
-    if investigator.stamina == 0:
-        investigator.unconscious = True

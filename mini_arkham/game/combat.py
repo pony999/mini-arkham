@@ -25,8 +25,9 @@ def combat(investigator: Investigator, monster: Monster) -> bool:
     if not horror_check(investigator, monster):
         horror_damage(investigator, monster)
 
-    if investigator.insane:
-        return False
+        if investigator.insane:
+            print("Investigator looses the duel.")
+            return False
 
     input("Press ENTER to continue...\n")
 
@@ -38,7 +39,7 @@ def combat(investigator: Investigator, monster: Monster) -> bool:
             combat_damage(investigator, monster)
 
             if investigator.unconscious:
-                print("The investigator is knocked unconscious and no longer able to fight.")
+                print("Investigator looses the duel.")
                 return False
 
         print("\nThe fight continues...")

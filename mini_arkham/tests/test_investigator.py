@@ -30,3 +30,43 @@ def test_reduce_sanity(investigator_obj):
     assert obj.sanity == 2
     assert obj.insane == False
 
+
+def test_insane(investigator_obj):
+    obj = investigator_obj
+    obj.reduce("sanity", 10)
+    assert obj.sanity == 0
+    assert obj.insane == True
+
+
+def test_no_longer_insane(investigator_obj):
+    obj = investigator_obj
+    obj.sanity.value = 0
+    obj.insane = True
+    assert obj.insane == True
+    obj.restore("sanity", 1)
+    assert obj.sanity == 1
+    assert obj.insane == False
+
+
+def test_reduce_stamina(investigator_obj):
+    obj = investigator_obj
+    obj.reduce("stamina", 3)
+    assert obj.stamina == 2
+    assert obj.unconscious == False
+
+
+def test_unconscious(investigator_obj):
+    obj = investigator_obj
+    obj.reduce("stamina", 10)
+    assert obj.stamina == 0
+    assert obj.unconscious == True
+
+
+def test_no_longer_unconscious(investigator_obj):
+    obj = investigator_obj
+    obj.stamina.value = 0
+    obj.unconscious = True
+    assert obj.unconscious == True
+    obj.restore("stamina", 1)
+    assert obj.stamina == 1
+    assert obj.unconscious == False

@@ -22,9 +22,13 @@ class Attribute:
         """Returns the value parameter once an instance is within another object"""
         return self.value
 
-    def __eq__(self, other:int):
+    def __eq__(self, other: int):
         """Allows to compare attribute value to int"""
         return self.value == other
+
+    def __gt__(self, other: int):
+        """Allows asserting value > int"""
+        return self.value > other
 
 
 class Sanity(Attribute):
